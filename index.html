@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B31SH7EVDB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B31SH7EVDB');
+    </script>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description"
+        content="Dukung perjalanan intelektual Anda dengan buku-buku pilihan dari Optimal Untuk Negeri, tersedia dalam format digital dan cetak." />
+    <meta name="google-site-verification" content="4P03KXY3TIy1f4P_4vjYrlfzs_RKHXNaemfxZrirfmo" />
+
+    <title>Repository Ilmiah | Optimal Untuk Negeri</title>
+
+    <link rel="icon" href="img/icon/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="img/icon/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/icon/favicon.ico" />
+
+    <meta property="og:title" content="Repository Ilmiah | Optimal Untuk Negeri" />
+    <meta property="og:description"
+        content="Dukung perjalanan intelektual Anda dengan buku-buku pilihan dari Optimal Untuk Negeri, tersedia dalam format digital dan cetak." />
+    <meta property="og:url" content="https://optimaluntuknegeri.github.io/repository-ilmiah/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://optimaluntuknegeri.github.io/repository-ilmiah/img/Logo.png" />
+
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* CSS Tambahan untuk Penulis */
+        .author-list {
+            position: relative;
+            max-height: 120px;
+            /* Sesuaikan dengan tinggi kira-kira 5 baris */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-list.gradient::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, white);
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .author-list.expanded {
+            max-height: 1000px;
+            /* Cukup besar untuk menampung semua penulis */
+        }
+
+        .author-list.expanded::after {
+            opacity: 0;
+        }
+
+        .toggle-authors {
+            display: inline-block;
+            color: #2563eb;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: color 0.2s;
+        }
+
+        .toggle-authors:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        .author-item {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/Logo.png" alt="Logo" class="logo-img" />
+        </div>
+        <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kontak</a></li>
+            <li><a href="#daftar-artikel">Katalog Buku</a></li>
+            <li><a href="https://scholar.google.com/citations?user=-ZvqsX4AAAAJ&hl=id">Google Scholar</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Temukan Wawasan Baru Lewat Koleksi Terbaik</h1>
+            <p>
+                Dukung perjalanan intelektual Anda dengan buku-buku pilihan dari Optimal Untuk Negeri, tersedia dalam
+                format digital dan cetak.
+            </p>
+            <div class="hero-buttons">
+                <a href="#daftar-artikel" class="btn btn-primary">Eksplorasi Katalog</a>
+                <a href="#" class="btn btn-secondary">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUKU SECTION -->
+    <section class="content" id="daftar-artikel">
+        <h2>Daftar Repository Ilmiah</h2>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Cari judul buku atau nama penulis..." class="search-box"
+                onkeyup="filterBooks()" />
+        </div>
+
+        <div id="card-container">
+            <div style="text-align: center; grid-column: 1/-1;">
+                <div class="loader"></div>
+                <p>Menghubungkan ke database...</p>
+            </div>
+        </div>
+
+        <div id="pagination" class="pagination"></div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <img src="img/Logo.png" alt="Optimal Untuk Negeri" class="footer-Logo"
+                    style="height: 40px; margin-bottom: 1.5rem;" />
+                <p>
+                    Kami adalah wadah yang menginspirasi para Dosen dan Mahasiswa untuk mengeksplorasi karya dan inovasi
+                    dalam bidangnya masing-masing.
+                </p>
+            </div>
+            <div class="footer-section links">
+                <h4>Halaman Terkait</h4>
+                <ul>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Hubungi Kami</a></li>
+                    <li><a href="#">Katalog Buku</a></li>
+                </ul>
+            </div>
+            <div class="footer-section links">
+                <h4>Tautan Resmi</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Disclaimer</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section contact">
+                <h4>Terhubung Bersama Kami</h4>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Alamat Email" required />
+                    <button type="submit">Kirim</button>
+                </form>
+                <div style="margin-top: 1.5rem; font-size: 0.85rem; line-height: 1.8;">
+                    <strong>PT Optimal Untuk Negeri</strong><br>
+                    <p>management@optimalbynfc.com</p><br>
+                    <a href="" style="color: #000; text-decoration: none;">
+                        <span class="elementor-icon-list-text">0822-9747-6868</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 PT Optimal Untuk Negeri</p>
+        </div>
+    </footer>
+
+    <!-- SDK supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Database Configuration
+        const SUPABASE_URL = "https://dqryqboivjxwlymneino.supabase.co";
+        const SUPABASE_ANON_KEY =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRxcnlxYm9pdmp4d2x5bW5laW5vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5OTk1OTgsImV4cCI6MjA3ODU3NTU5OH0.i5a8MC0_27GdlVkXYANY7S56dRaSM8p4Re9ZMj-0AzA";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        const cardsPerPage = 9; // Optimal for grid
+        let currentPage = 1;
+        let currentSearchTerm = "";
+
+        async function loadBooks(page = 1, searchTerm = "") {
+            const container = document.getElementById("card-container");
+            if (page === 1 && searchTerm === "") {
+                // Initial load show loader
+            } else {
+                container.style.opacity = "0.6";
+            }
+
+            const from = (page - 1) * cardsPerPage;
+            const to = from + cardsPerPage - 1;
+
+            let query = supabaseClient
+                .from("books")
+                .select("*", { count: "exact" });
+
+            if (searchTerm.trim() !== "") {
+                const cleanSearch = searchTerm.trim().replace(/[^\w\s]/gi, ' ').replace(/\s+/g, ' ');
+                const keywords = cleanSearch.split(' ').filter(k => k.length > 0);
+                if (keywords.length > 0) {
+                    keywords.forEach(word => {
+                        query = query.or(`judul.ilike.%${word}%,author.ilike.%${word}%`);
+                    });
+                }
+            }
+
+            query = query.range(from, to).order('created_at', { ascending: false });
+
+            const { data, error, count } = await query;
+
+            container.style.opacity = "1";
+
+            if (error) {
+                console.error("Error fetching books:", error);
+                container.innerHTML = `<p style="text-align: center; grid-column: 1/-1; color: #ef4444;">Gagal memuat data dari database. Silakan coba lagi nanti.</p>`;
+                return;
+            }
+
+            container.innerHTML = "";
+
+            if (data.length === 0) {
+                container.innerHTML = `<div style="text-align: center; grid-column: 1/-1; padding: 3rem;">
+          <p style="font-size: 1.1rem; color: #64748b;">Tidak ada buku yang ditemukan untuk "${searchTerm}"</p>
+          <button onclick="document.getElementById('searchInput').value=''; loadBooks(1, '');" class="btn" style="margin-top: 1rem; color: var(--primary-color);">Reset Pencarian</button>
+        </div>`;
+                return;
+            }
+
+            data.forEach((book) => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                // Split authors by newline
+                const authors = book.author
+                    ? book.author.split(/\r?\n/).map(a => a.trim()).filter(a => a)
+                    : [];
+
+                const hasMore = authors.length > 3;
+
+                card.innerHTML = `
+          <div class="cover-container">
+            <img src="${book.cover_url || 'https://via.placeholder.com/300x420?text=No+Cover'}" alt="Cover ${book.judul}" class="cover-img" loading="lazy" />
+          </div>
+          <div class="card-content">
+            <h3>${book.judul}</h3>
+            <span class="author-label">Penulis</span>
+            <div class="author-list ${hasMore ? "gradient" : ""}" id="author-list-${book.id}">
+              ${authors.map(a => `<div class="author-item" title="${a}">${a}</div>`).join("")}
+            </div>
+            ${hasMore ? `<span class="toggle-authors" data-id="${book.id}">+ Selengkapnya</span>` : ""}
+            <div class="card-footer">
+              <a href="${book.detail_buku}" class="btn btn-detail">Lihat Detail</a>
+            </div>
+          </div>
+        `;
+
+                container.appendChild(card);
+            });
+
+            // Toggle Author Logic
+            document.querySelectorAll(".toggle-authors").forEach(btn => {
+                btn.onclick = (e) => {
+                    const id = btn.getAttribute("data-id");
+                    const list = document.getElementById(`author-list-${id}`);
+                    const isExpanded = list.classList.toggle("expanded");
+                    btn.textContent = isExpanded ? "- Sembunyikan" : "+ Selengkapnya";
+
+                    // Toggle gradient class based on expansion
+                    if (isExpanded) {
+                        list.classList.remove("gradient");
+                    } else {
+                        list.classList.add("gradient");
+                    }
+                };
+            });
+
+            currentPage = page;
+            currentSearchTerm = searchTerm;
+            renderPagination(count);
+        }
+
+        function renderPagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / cardsPerPage);
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            if (totalPages <= 1) return;
+
+            // Previous
+            const prevBtn = document.createElement("button");
+            prevBtn.innerHTML = "&laquo;";
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.onclick = () => { loadBooks(currentPage - 1, currentSearchTerm); scrollToTop(); };
+            pagination.appendChild(prevBtn);
+
+            // Page Numbers
+            let start = Math.max(1, currentPage - 2);
+            let end = Math.min(totalPages, start + 4);
+            if (end - start < 4) start = Math.max(1, end - 4);
+
+            if (start > 1) {
+                const first = document.createElement("button");
+                first.textContent = "1";
+                first.onclick = () => { loadBooks(1, currentSearchTerm); scrollToTop(); };
+                pagination.appendChild(first);
+                if (start > 2) {
+                    const dots = document.createElement("span");
+                    dots.textContent = "...";
+                    dots.style.padding = "0 5px";
+                    pagination.appendChild(dots);
+                }
+            }
+
+            for (let i = start; i <= end; i++) {
+                const btn = document.createElement("button");
+                btn.textContent = i;
+                if (i === currentPage) btn.classList.add("active");
+                btn.onclick = () => { loadBooks(i, currentSearchTerm); scrollToTop(); };
+                pagination.appendChild(btn);
+            }
+
+            if (end < totalPages) {
+                if (end < totalPages - 1) {
+                    const dots = document.createElement("span");
+                    dots.textContent = "...";
+                    dots.style.padding = "0 5px";
+                    pagination.appendChild(dots);
+                }
+                const last = document.createElement("button");
+                last.textContent = totalPages;
+                last.onclick = () => { loadBooks(totalPages, currentSearchTerm); scrollToTop(); };
+                pagination.appendChild(last);
+            }
+
+            // Next
+            const nextBtn = document.createElement("button");
+            nextBtn.innerHTML = "&raquo;";
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.onclick = () => { loadBooks(currentPage + 1, currentSearchTerm); scrollToTop(); };
+            pagination.appendChild(nextBtn);
+        }
+
+        // Debounce search for performance
+        let searchTimeout;
+        function filterBooks() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const input = document.getElementById("searchInput");
+                loadBooks(1, input.value.trim());
+            }, 400);
+        }
+
+        function scrollToTop() {
+            document.getElementById("daftar-artikel").scrollIntoView({ behavior: "smooth" });
+        }
+
+        // Navbar Mobile Toggle
+        const toggle = document.getElementById("menu-toggle");
+        const navLinks = document.getElementById("nav-links");
+        toggle.addEventListener("click", () => {
+            const isShowing = navLinks.classList.toggle("show");
+            if (isShowing) {
+                navLinks.style.display = "flex";
+                navLinks.style.flexDirection = "column";
+                navLinks.style.position = "absolute";
+                navLinks.style.top = "100%";
+                navLinks.style.left = "0";
+                navLinks.style.width = "100%";
+                navLinks.style.background = "white";
+                navLinks.style.padding = "1.5rem";
+                navLinks.style.boxShadow = "0 10px 15px -3px rgba(0,0,0,0.1)";
+                navLinks.style.borderTop = "1px solid #f1f5f9";
+            } else {
+                navLinks.style.display = "none";
+            }
+        });
+
+        // Initialize
+        window.onload = () => {
+            loadBooks();
+        };
+    </script>
+</body>
+
+</html>
